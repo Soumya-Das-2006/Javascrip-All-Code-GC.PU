@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Box Events</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: rgb(137, 235, 241);
+            text-align: center;
+            line-height: 200px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div id="box">
+    Hover or Click Me!
+</div>
+
+<p id="output"></p>
+
+<script>
+    const box = document.getElementById("box");
+    const output = document.getElementById("output");
+
+    // Mouseover
+    box.addEventListener("mouseover", function () {
+        box.style.backgroundColor = "lightgreen";
+        output.textContent = "Mouse is over the box.";
+    });
+
+    // Mouseout
+    box.addEventListener("mouseout", function () {
+        box.style.backgroundColor = "skyblue";
+        output.textContent = "Mouse left the box.";
+    });
+
+    // Click
+    box.addEventListener("click", function () {
+        output.textContent = "Box was clicked!";
+    });
+</script>
+
+</body>
+</html>

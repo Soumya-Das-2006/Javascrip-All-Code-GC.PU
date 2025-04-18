@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DOM Selectors Example</title>
+</head>
+<body>
+
+  <h1 id="main-title">Hello DOM</h1>
+
+  <p class="description">This is a paragraph.</p>
+  <p class="description">Another paragraph.</p>
+
+  <div name="info">Info using name attribute</div>
+
+  <ul>
+    <li>Item 1</li>
+    <li class="highlight">Item 2</li>
+    <li id="special-item">Item 3</li>
+  </ul>
+
+  <button onclick="accessSelectors()">Click to Access Elements</button>
+
+  <script>
+    function accessSelectors() {
+      // Access by ID
+      const title = document.getElementById("main-title");
+      console.log("By ID:", title.textContent);
+
+      // Access by Class Name
+      const descriptions = document.getElementsByClassName("description");
+      console.log("By Class Name:", descriptions[0].textContent, descriptions[1].textContent);
+
+      // Access by Name
+      const info = document.getElementsByName("info")[0];
+      console.log("By Name:", info.textContent);
+
+      // Access by Tag Name
+      const listItems = document.getElementsByTagName("li");
+      console.log("By Tag Name:", listItems[0].textContent, listItems[1].textContent, listItems[2].textContent);
+
+      // Access by Query Selector
+      const specialItem = document.querySelector("#special-item");
+      console.log("By Query Selector (ID):", specialItem.textContent);
+
+      const highlighted = document.querySelector(".highlight");
+      console.log("By Query Selector (Class):", highlighted.textContent);
+
+      // Access all matches using querySelectorAll
+      const allDescriptions = document.querySelectorAll(".description");
+      allDescriptions.forEach((desc, index) => {
+        console.log(`querySelectorAll [.description][${index}]:`, desc.textContent);
+      });
+
+      // Modify an element
+      specialItem.style.color = "red";
+      specialItem.textContent = "Updated Item 3";
+
+      // Display on Page
+      const outputDiv = document.createElement("div");
+      outputDiv.style.marginTop = "20px";
+      outputDiv.innerHTML = `
+        <strong>Output:</strong><br>
+        Title: ${title.textContent}<br>
+        Description 1: ${descriptions[0].textContent}<br>
+        Description 2: ${descriptions[1].textContent}<br>
+        Info: ${info.textContent}<br>
+        List Items: ${listItems[0].textContent}, ${listItems[1].textContent}, ${listItems[2].textContent}<br>
+        Special Item: ${specialItem.textContent}<br>
+        Highlighted: ${highlighted.textContent}
+      `;
+      document.body.appendChild(outputDiv);
+    }
+  </script>
+
+</body>
+</html>

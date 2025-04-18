@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cookie Example</title>
+</head>
+<body>
+    <h2>Cookie Demo</h2>
+
+    <button onclick="setCookie('username', userName, 7)">Set Cookie (7 days)</button>
+    <button onclick="alert('Cookie value: ' + getCookie('username'))">Get Cookie</button>
+    <button onclick="deleteCookie('username')">Delete Cookie</button>
+
+    <script>
+        let userName = prompt("Enter your Name", "");
+
+        // Set a cookie
+        function setCookie(name, value, days) {
+            const expires = new Date(Date.now() + days * 864e5).toUTCString();
+            document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/`;
+        }
+
+        // Get a cookie
+        function getCookie(name) {
+            return document.cookie
+                .split('; ')
+                .find(row => row.startsWith(name + "="))
+                ?.split('=')[1] || '';
+        }
+
+        // Delete a cookie
+        function deleteCookie(name) {
+            document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Email Validation</title>
+</head>
+<body>
+
+  <input type="text" id="email" placeholder="Enter your email">
+  <button onclick="checkEmail()">Check Email</button>
+  <p id="result"></p>
+
+  <script>
+    function checkEmail() {
+      const email = document.getElementById("email").value;
+      const result = document.getElementById("result");
+
+      const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,}$/;
+
+      if (regex.test(email)) {
+        result.textContent = "✔ Valid Email";
+        result.style.color = "green";
+      } else {
+        result.textContent = "✘ Invalid Email";
+        result.style.color = "red";
+      }
+    }
+  </script>
+
+</body>
+</html>
