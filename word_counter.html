@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Word Counter</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    textarea {
+      width: 100%;
+      height: 150px;
+      padding: 15px;
+      font-size: 16px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      resize: none;
+      transition: border-color 0.3s ease;
+    }
+
+    textarea:focus {
+      outline: none;
+      border-color: #4a90e2;
+    }
+
+    .stats {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 16px;
+      color: #444;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📝 Word & Character Counter</h1>
+    <textarea id="text-input" placeholder="Start typing your text here..."></textarea>
+    <div class="stats">
+      <div id="word-count">Words: 0</div>
+      <div id="char-count">Characters: 0</div>
+    </div>
+  </div>
+
+  <script>
+    const textarea = document.getElementById('text-input');
+    const wordCount = document.getElementById('word-count');
+    const charCount = document.getElementById('char-count');
+
+    textarea.addEventListener('input', () => {
+      const text = textarea.value.trim();
+      const words = text === "" ? 0 : text.split(/\s+/).length;
+      const chars = textarea.value.length;
+      wordCount.textContent = `Words: ${words}`;
+      charCount.textContent = `Characters: ${chars}`;
+    });
+  </script>
+</body>
+</html>
